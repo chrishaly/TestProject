@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title></title>
+	<script src="../scripts/jquery-1.11.1.min.js"></script>
+	<style type="text/css">
+		.body {
+			font-size: xx-large;
+		}
+	</style>
+	<script type="text/javascript">
+		$(document).ready(function ()
+		{
+			setInterval(setLocation, 1000);
+		});
+
+		function setLocation()
+		{
+			var loc = navigator.geolocation.getCurrentPosition(function (addr)
+			{
+				//Geoposition {timestamp: 1403342313902, coords: Coordinates}
+				//coords: Coordinates
+				//accuracy: 24
+				//altitude: null
+				//altitudeAccuracy: null
+				//heading: null
+				//latitude: 31.220888100000003
+				//longitude: 121.66194999999999
+				//speed: null
+				//__proto__: Coordinates
+				//timestamp: 1403342313902
+				//__proto__: Geoposition
+
+				$("#location").html(addr.coords.latitude + "," + addr.coords.longitude
+					+ "<br />accuracy:" + addr.coords.accuracy
+					+ "<br />time:" + new Date().toLocaleString());
+			});
+		}
+	</script>
+</head>
+<body>
+	<div id="location"></div>
+</body>
+</html>
